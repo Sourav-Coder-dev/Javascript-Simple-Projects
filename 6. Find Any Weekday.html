@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="res/bootstrap@5.0.0-alpha2.min.css" type="text/css" media="all" />
+</head>
+
+<body>
+	<div class="main">
+		<h2 id="heading">Get weekday putting the date</h2>
+		<hr>
+		<div class="mb-3">
+			<label for="exampleInputEmail1" class="form-label">Enter the day</label>
+			<input type="number" class="form-control" id="day" aria-describedby="emailHelp">
+			<div class="form-text">Numeric values</div>
+		</div>
+		<div class="mb-3">
+			<label for="exampleInputPassword1" class="form-label">Enter month</label>
+			<input type="number" class="form-control" id="month">
+			<div class="form-text">Numeric values</div>
+		</div>
+		<div class="mb-3">
+			<label for="exampleInputEmail1" class="form-label">Year</label>
+			<input type="number" class="form-control" id="year" aria-describedby="emailHelp">
+			<div class="form-text">Four digits required</div>
+		</div>
+		<button id="button" class="btn btn-secondary">Submit</button>
+	</div>
+	<script type="text/javascript" charset="utf-8">
+		//     select elements
+		var day = document.getElementById("day");
+		var month = document.getElementById("month");
+		var year = document.getElementById("year");
+		var inputs = document.querySelectorAll("input");
+		var formText = document.querySelectorAll(".form-text");
+		//     main function,  includes Date() methods & for-of loop
+		var getYourDay = () => {
+			var newDate = new Date(`${year.value} ${month.value} ${day.value}`);
+			var res = newDate.toLocaleDateString([], { weekday: 'long' });
+			for (let item of inputs) {
+				if (!item.value) {
+					heading.textContent = ""
+					for (let form of formText) {
+						form.textContent = "Please fill this input..!"
+						form.style.color = "red"
+					}
+				} else {
+					heading.innerText = res
+					heading.style.color = "green"
+					for (let form of formText) {
+						form.textContent = ""
+						form.style.color = "black"
+					}
+				}
+			}
+		}
+		button.addEventListener("click", getYourDay);
+	</script>
+	<style type="text/css" media="all">
+		* {
+			margin: 0;
+			padding: 0;
+			outline: none;
+			color: #386770;
+			font-weight: 700;
+		}
+
+		body {
+			background-color: #FFF5E5;
+		}
+
+		.main {
+			height: max-content;
+			width: 85%;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			padding: 15px;
+			box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+			position: fixed;
+			top: 45%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #fff;
+		}
+	</style>
+</body>
+
+</html>

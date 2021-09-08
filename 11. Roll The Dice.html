@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>roll the dice</title>
+	<style type="text/css" media="all">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			height: 50vh;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			justify-content: space-evenly;
+		}
+
+		.chakka {
+			height:70px;
+			width: 70px;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+			border-radius: 20px;
+			box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: .2s;
+			padding: 10px;
+		}
+
+		.one {
+			display: none;
+		}
+
+		.circles {
+			width: 17px;
+			height:17px;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+			background: #2F2F2F;
+		}
+
+		.two {
+			width: 100%;
+			display: none;
+		}
+
+		.two>.col {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			transform: rotate(45deg);
+		}
+
+		.three {
+			width: 100%;
+			display: none;
+		}
+
+		.three>.col {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			transform: rotate(45deg);
+		}
+
+		.four {
+			display: flex;
+			width: 100%;
+			flex-direction: column;
+			justify-content: space-evenly;
+			height: 100%;
+			display: none;
+		}
+
+		.four>.colF {
+			width: 100%;
+			display: flex;
+			justify-content: space-evenly;
+			height: 20%;
+		}
+
+		button {
+			padding: 10px;
+		}
+
+		.five,
+		.six {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			align-items: center;
+			display: none;
+		}
+
+		.fcol {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			height: calc(100% / 6);
+			align-items: center;
+		}
+
+		.rotate {
+			transform: rotate(20turn) rotateY(20turn) rotateX(20turn);
+		}
+
+		.chakka:hover>h1 {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="chakka">
+		<h1>Roll Me</h1>
+		<div class="diceNum one">
+			<div class="circles"></div>
+		</div>
+		<div class="diceNum two">
+			<div class="col">
+				<div class="circles"></div>
+				<div class="circles"></div>
+			</div>
+		</div>
+		<div class="diceNum three">
+			<div class="col">
+				<div class="circles"></div>
+				<div class="circles"></div>
+				<div class="circles"></div>
+			</div>
+		</div>
+		<div class="diceNum four">
+			<div class="colF">
+				<div class="circles"></div>
+				<div class="circles"></div>
+			</div>
+			<div class="colF">
+				<div class="circles"></div>
+				<div class="circles"></div>
+			</div>
+		</div>
+		<div class="diceNum five">
+			<div class="fcol">
+				<div class="circles"></div>
+				<div class="circles"></div>
+			</div>
+			<div class="fcol">
+				<div class="circles"></div>
+			</div>
+			<div class="fcol">
+				<div class="circles"></div>
+				<div class="circles"></div>
+			</div>
+		</div>
+		<div class="diceNum six">
+			<div class="fcol">
+				<div class="circles"></div>
+				<div class="circles"></div>
+			</div>
+			<div class="fcol">
+				<div class="circles"></div>
+				<div class="circles"></div>
+			</div>
+			<div class="fcol">
+				<div class="circles"></div>
+				<div class="circles"></div>
+			</div>
+		</div>
+	</div>
+	<h1></h1>
+	<script type="text/javascript" charset="utf-8">
+		"use strict";
+		let body = document.body;
+		let chakka = document.querySelector(".chakka");
+		let one = document.querySelector(".one");
+		let two = document.querySelector(".two");
+		let three = document.querySelector(".three");
+		let four = document.querySelector(".four");
+		let five = document.querySelector(".five");
+		let six = document.querySelector(".six");
+		let dices = document.querySelectorAll(".diceNum");
+		let btn = document.querySelector("button");
+		let randomDice;
+
+		chakka.addEventListener("click", () => {
+			randomDice = Math.floor(Math.random() * (6 - 1 + 1) + 1);
+			console.log(randomDice);
+			chakka.classList.toggle("rotate")
+			rolDice();
+		})
+
+		function rolDice() {
+			for (let items of dices) {
+				items.style.display = "none";
+				if (randomDice == 1) {
+					if (items.classList.contains("one")) {
+						one.style.display = "block"
+					}
+				}
+				if (randomDice == 2) {
+					if (items.classList.contains("two")) {
+						two.style.display = "block";
+					}
+				}
+				if (randomDice == 3) {
+					if (items.classList.contains("three")) {
+						three.style.display = "block";
+					}
+				}
+				if (randomDice == 4) {
+					if (items.classList.contains("four")) {
+						four.style.display = "flex";
+					}
+				}
+				if (randomDice == 5) {
+					if (items.classList.contains("five")) {
+						five.style.display = "flex";
+					}
+				}
+				if (randomDice == 6) {
+					if (items.classList.contains("six")) {
+						six.style.display = "flex";
+					}
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

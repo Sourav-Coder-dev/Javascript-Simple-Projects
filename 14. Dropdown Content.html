@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css" media="all">
+		* {
+			margin: 0;
+			padding: 0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			transition: 1s
+		}
+
+		body {
+			background-color: #7B83DD;
+			display: flex;
+			justify-content: center;
+		}
+
+		.content {
+			height: max-content;
+			width: 90%;
+		}
+
+		.cols {
+			height: max-content;
+			width: 100%;
+			background-color: #fff;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.label {
+			height: 50px;
+			display: flex;
+			align-items: center;
+			padding-left: 10px;
+			border-bottom: .5px solid #D9D9D9;
+		}
+
+		.lorem {
+			width: 100%;
+			padding-left: 10px;
+			display: none;
+			background-color: #E8E8E8;
+			border: .5px solid #F0F0F0;
+			overflow: hidden;
+		}
+
+		.active {
+			display: flex;
+			padding: 10px;
+			height: max-content;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="content">
+		<div class="cols">
+			<div class="label">Section1</div>
+			<div class="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui cumque maxime quae, est enim aliquam aut iste, nesciunt inventore esse architecto in vitae, vel sit, odio ipsam unde veniam laborum.</div>
+		</div>
+		<div class="cols">
+			<div class="label">Section2</div>
+			<div class="lorem">Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit fugiat dolore temporibus, molestiae quod animi, ducimus velit perspiciatis atque, provident necessitatibus sequi excepturi dicta soluta laboriosam ut possimus nemo illo pariatur aspernatur consequuntur tenetur! Consectetur aliquid magni molestias architecto quae reiciendis nam repudiandae doloremque odit aspernatur distinctio accusamus iste quidem quam officiis illum, a voluptas nobis vitae. Id perferendis, in alias placeat beatae expedita eaque dignissimos eius reprehenderit necessitatibus, molestias, atque sed doloribus sint voluptate excepturi officia rerum odio, amet repellat optio consectetur corporis laboriosam debitis nisi! Magnam fugit odio maiores doloremque laboriosam repellendus, obcaecati, in reprehenderit non veritatis earum omnis debitis officiis deserunt nesciunt. Laudantium sint laboriosam asperiores neque blanditiis, distinctio dolore. Soluta commodi dolorem libero architecto, harum dolorum, reprehenderit quisquam quae quam assumenda explicabo eius aliquam non maxime dolores vitae? Odit impedit fugiat veritatis blanditiis omnis tenetur ipsam cupiditate similique repellendus dolorem sed sint officiis nostrum nam necessitatibus eligendi assumenda, quo ullam explicabo soluta porro molestias accusantium. Veniam cumque doloribus temporibus, pariatur voluptatibus beatae facilis quia corporis aliquam, accusamus, animi nam nostrum quod enim tempora eum maxime nemo, necessitatibus sapiente. Eum, ratione, assumenda! Odio minus, optio ut excepturi quo eligendi obcaecati, nobis quod doloribus alias maxime fugit architecto? dolor sit amet, consectetur adipisicing elit. Omnis numquam velit aperiam minus, saepe, earum totam ipsam suscipit nulla iure recusandae voluptatibus, itaque eveniet amet veritatis similique enim ullam blanditiis!</div>
+		</div>
+		<div class="cols">
+			<div class="label">Section3</div>
+			<div class="lorem">Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad debitis, veniam incidunt perferendis nisi suscipit, deserunt eius corporis consequuntur aspernatur quis, at itaque quia? Accusantium quia illum voluptatum quasi, magni blanditiis! Ea minima nihil expedita doloribus voluptates, fugiat porro dicta sunt, nemo, quod delectus id excepturi itaque! At eaque, necessitatibus fuga porro recusandae, itaque voluptatum similique accusamus, perferendis, placeat modi eos dolores commodi nulla vel. Non molestias molestiae, impedit ad aliquam deleniti saepe eius labore temporibus commodi ipsa iure dolore accusamus aut culpa in voluptatum praesentium! Atque asperiores voluptate aspernatur perferendis, aliquam velit sit mollitia quae repudiandae. Quam soluta, repudiandae. sit amet, consectetur adipisicing elit. Magnam modi molestiae excepturi id, blanditiis fugit numquam nobis placeat vel pariatur? Temporibus illum nemo, cum hic ea officia dolorum, quas quod.</div>
+		</div>
+	</div>
+	<script type="text/javascript" charset="utf-8">
+		let label = document.querySelectorAll(".label");
+		for (let item of label) {
+			item.addEventListener("click", (e) => {
+				e.target.nextElementSibling.classList.toggle("active")
+			})
+		}
+	</script>
+</body>
+
+</html>

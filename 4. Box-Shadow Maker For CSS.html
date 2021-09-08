@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="res/bootstrap@5.0.0-alpha2.min.css">
+</head>
+
+<body>
+	<div class="top">
+		<div class="editElement yoo"></div>
+	</div>
+	<div class="bottom">
+		<div class="cols">
+			<div class="label">Top</div>
+			<div class="ranges">
+				<input type="range" class="input" id="top" min="-10" max="10">
+			</div>
+			<div class="output">0</div>
+		</div>
+		<div class="cols">
+			<div class="label">Left</div>
+			<div class="ranges">
+				<input type="range" class="input" id="left" min="-10" max="10">
+			</div>
+			<div class="output">0</div>
+		</div>
+		<div class="cols">
+			<div class="label">Blur</div>
+			<div class="ranges">
+				<input type="range" value="3" min="1" max="40" class="input" id="blur">
+			</div>
+			<div class="output">3</div>
+		</div>
+		<div class="cols">
+			<div class="label">Opacity</div>
+			<div class="ranges">
+				<input type="range" value=".5" max="1" min=".1" step=".1" class="input" id="opacity">
+			</div>
+			<div class="output">.5</div>
+		</div>
+	</div>
+	<div class="input-group mb-3">
+		<input type="text" id="code" class="form-control" readonly placeholder="Generate gradients" aria-label="Recipient's username" aria-describedby="button-addon2">
+		<button class="btn btn-success" type="button" id="copyText">Copy</button>
+	</div>
+	<script src="js/bootstrap.bundle.js" type="text/javascript" charset="utf-8"></script>
+	<script src="res/script.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css" media="all">
+		* {
+			margin: 0;
+			padding: 0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			/* border: 1px solid #000; */
+		}
+
+		body {
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: darkorange;
+		}
+
+		.top {
+			height: 40%;
+			width: 90%;
+			background: #fff;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			margin-top: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.bottom {
+			height: 25%;
+			width: 90%;
+			background: #fff;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			margin-top: 15px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
+			margin-bottom: 15px;
+		}
+
+		.cols {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: calc(100% / 4);
+			width: 90%;
+		}
+
+		.label {
+			width: 15%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.ranges {
+			width: 60%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.output {
+			width: 15%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		input {
+			width: 100%;
+		}
+
+		.editElement {
+			height: 100px;
+			width: 100px;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			background-color: #fff;
+		}
+
+		.yoo {
+			box-shadow: 2px 2px 5px #00000087;
+		}
+
+		.input-group {
+			width: 90%;
+		}
+	</style>
+	<script type="text/javascript" charset="utf-8">
+		"use strict";
+		//     Select All The Elements
+		var left_value = document.querySelector("#left");
+		var top_value = document.querySelector("#top");
+		var blur_value = document.querySelector("#blur");
+		var opacity_value = document.querySelector("#opacity");
+		var input = document.querySelectorAll(".input");
+		var edit_elem = document.querySelector(".editElement");
+		var formCode = document.querySelector("#code");
+		var copyTxt = document.querySelector("#copyText");
+		formCode.value = "box-shadow: 2px 2px 5px #00000087";
+		//    Main function, includes DOM methods
+		for (let items of input) {
+			items.addEventListener("input", (e) => {
+				e.target.parentNode.nextElementSibling.textContent = items.value;
+				edit_elem.style.boxShadow = `${left_value.value}px ${top_value.value}px ${blur_value.value}px rgba(0,0,0,${opacity_value.value})`;
+				formCode.value = `box-shadow: ${left_value.value}px ${top_value.value}px ${blur_value.value}px rgba(0, 0, 0, ${opacity_value.value})`;
+			});
+		};
+		// Copy to clickboard method
+		copyTxt.addEventListener("click", () => {
+			formCode.select();
+			document.execCommand('copy');
+			alert(`Copied text:
+   	 ${code.value}`);
+		});
+	</script>
+</body>
+
+</html>

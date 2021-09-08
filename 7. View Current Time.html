@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css" media="all">
+		body {
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: linear-gradient(141deg, #915, #731);
+		}
+
+		#para {
+			font-size: 3em;
+			background: #FFFFFF36;
+			padding: 15px;
+			-webkit-border-radius: 7px;
+			-moz-border-radius: 7px;
+			border-radius: 7px;
+			color: #fff;
+		}
+	</style>
+</head>
+
+<body>
+	<p id="para"></p>
+	<script type="text/javascript" charset="utf-8">
+		//   Calling function after every 1 seconds
+		setInterval(DisplayCurrentTime, 1000);
+		window.onload = function() {
+			DisplayCurrentTime();
+		};
+		//   main function, includes date() method
+		function DisplayCurrentTime() {
+			var date = new Date();
+			var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+			var am_pm = date.getHours() >= 12 ? "PM" : "AM";
+			hours = hours < 10 ? "0" + hours : hours;
+			var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+			var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+			var realTime = `${hours}: ${minutes}: ${seconds} ${am_pm}`;
+			para.innerText = realTime;
+		};
+	</script>
+</body>
+
+</html>

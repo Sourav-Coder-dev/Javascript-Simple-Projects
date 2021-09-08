@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body>
+	<textarea placeholder="Type here..." cols="50" rows="25"></textarea>
+	<p>length of words</p>
+	<span>length of letters</span>
+	<script type="text/javascript" charset="utf-8">
+		let area = document.querySelector("textarea");
+		let letters = document.querySelector("span");
+		let words = letters.parentNode.children[1];
+		area.addEventListener("input", () => {
+			letters.textContent ="length of letters:  "+ area.value.length;
+			words.textContent = "length of words:  " + area.value.trim().split(/\s/).length;
+			if(!area.value){
+				words.textContent = "length of words:  0"
+			}
+		})
+	</script>
+</body>
+
+</html>

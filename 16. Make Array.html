@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body>
+	<textarea rows="20" cols="50"></textarea>
+	<button style="padding: 10px">Click</button>
+	<p></p>
+	<script type="text/javascript" charset="utf-8">
+		let area = document.body.children[0];
+		let btn = area.nextElementSibling;
+		let result = btn.nextElementSibling;
+		btn.addEventListener("click", getArray);
+
+		function getArray() {
+			let values = area.value.trim().split(/\s+/)
+			for(let item of values){
+				if(values < 1){
+					console.error("This needs words")
+				} else{
+					result.innerHTML += `"${item}", `;
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

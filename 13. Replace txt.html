@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!-- <link rel="stylesheet" href="res/bootstrap@5.0.0-alpha2.min.css" type="text/css" media="all" /> -->
+	<style type="text/css" media="all">
+		* {
+			margin: 0;
+			padding: 0;
+			outline: none;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		body {
+			background-color: lightcoral;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 10px;
+		}
+
+		.main {
+			background-color: lightcoral;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		p {
+			column-count: 4;
+			direction: inherit
+		}
+
+		textarea {
+			width: 90%;
+			height: 40px;
+			border: none;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			padding: 10px;
+		}
+
+		p {
+			width: 100%;
+			font-size: 12px;
+			background: #00000047;
+			padding: 15px;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main">
+		<textarea name="" id=rows="8" cols="40" placeholder="Type some words..."></textarea>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore maxime eos praesentium sunt, commodi libero saepe assumenda modi autem nemo incidunt aliquam pariatur odio dolorum voluptates non cumque neque officiis sint obcaecati fugiat quisquam, tenetur error. Vitae aliquid sunt sequi sit labore. Blanditiis assumenda possimus pariatur iure, quia inventore ut, quidem quod excepturi sapiente quae modi magnam consectetur velit dignissimos totam et voluptate consequuntur ad. Ducimus cupiditate laborum fugiat, in quos aspernatur iure nobis, quibusdam sed facilis sint a ratione, beatae nemo tempora culpa vitae perferendis, praesentium debitis aliquid. Odit debitis nesciunt voluptatem quibusdam error saepe quaerat nemo commodi, hic, quidem porro pariatur nam repudiandae incidunt vel, doloribus assumenda iste perferendis! Omnis harum sint dolorem error autem, repellendus dignissimos aliquam laudantium possimus ipsa, iure, fugit facere libero laborum tenetur, nam sit neque numquam eum consequuntur ipsam cumque. Quaerat at eum molestiae veritatis sed. Delectus omnis quaerat in atque alias dolorem minus voluptate, facere iure autem suscipit, quidem perspiciatis incidunt laudantium molestias corrupti odio aliquid a tempore reprehenderit rerum earum, voluptates unde nesciunt labore. Eaque, voluptas, beatae! Sunt commodi et, ducimus eligendi quasi ipsam at laudantium tenetur modi beatae. At ex facere molestias aspernatur cum architecto, cumque laboriosam repellendus placeat obcaecati eos sequi amet. Qui quaerat assumenda voluptatum consequatur, laborum voluptatem dolorum eum sequi dicta et quisquam neque accusamus itaque perspiciatis ratione veritatis quasi, libero minima soluta natus harum voluptates quo iste quia iure. Sunt natus modi repellendus harum, unde facere labore fugit. Officia qui nemo dignissimos incidunt odit non numquam ipsam rem labore voluptatem debitis repellendus in impedit culpa, est quo id maxime hic cumque consequatur quaerat, ullam maiores commodi! Aliquam quibusdam officiis quisquam eaque aliquid quos sunt provident sint, tenetur doloribus neque consequatur soluta perferendis placeat nisi sapiente? Assumenda nihil libero soluta. Maiores maxime inventore, hic aliquam. Possimus, et.</p>
+	</div>
+	<script type="text/javascript" charset="utf-8">
+		let para = document.querySelector("p");
+		let area = document.querySelector("textarea");
+		area.oninput = () => {
+			let value = new RegExp(`${area.value}`, "gi");
+			para.innerHTML = para.textContent.replace(value, (event) => {
+				return `<mark>${event}</mark>`
+			})
+		}
+	</script>
+</body>
+
+</html>

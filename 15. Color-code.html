@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css" media="all">
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		input {
+			width: 50%;
+			height: 40px;
+			padding-left: 15px;
+			border: 1px solid grey;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			outline: none;
+		}
+	</style>
+</head>
+
+<body>
+	<input type="text" placeholder="Enter a Color-code" />
+	<script type="text/javascript" charset="utf-8">
+		window.addEventListener("load", () => {
+			let body = document.body;
+			let input = body.children[0];
+
+			function changeColor() {
+				let input_value = input.value.split(" ");
+				body.style.background = `${(input_value[0])}`
+			}
+			input.addEventListener("input", changeColor);
+		})
+	</script>
+</body>
+
+</html>

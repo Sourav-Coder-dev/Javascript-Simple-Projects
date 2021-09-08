@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css" media="all">
+		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+		* {
+			margin: 0;
+			padding: 0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			font-family: 'Roboto', sans-serif;
+			color: #fff;
+			transition: 1s
+		}
+
+		body {
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #000;
+		}
+
+		.content {
+			width: 280px;
+			height: 150px;
+			background-color: #2B2B2B;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+			border-radius: 10px;
+			overflow: hidden;
+		}
+
+		.header {
+			height: 35px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid #505050;
+			padding: 0 20px 0 20px
+		}
+
+		h3 {
+			color: #ACACAC;
+		}
+
+		.icon {
+			position: relative;
+			top: 2px;
+		}
+
+		.container {
+			height: calc(100% - 35px);
+			width: 100%;
+			display: flex;
+		}
+
+		.battery-div {
+			height: 100%;
+			width: 40%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+
+		.details {
+			height: 100%;
+			width: calc(100% - 35%);
+			display: flex;
+			flex-direction: row;
+		}
+
+		.ques,
+		.ans {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			white-space: nowrap;
+			font-size: 14px;
+
+		}
+
+		.ques {
+			width: 60%;
+		}
+
+		.ans {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 30%;
+		}
+
+		.ans>p {
+			color: #ACACAC;
+		}
+
+		.battery {
+			height: 70%;
+			width: 40%;
+			border: 3px solid #ACACAC;
+			-webkit-border-radius: 7px;
+			-moz-border-radius: 7px;
+			border-radius: 7px;
+			padding: 1.5px;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+		}
+
+		.inBattery {
+			height: 0;
+			width: 100%;
+			background-color: #07D800;
+			background-color: #fff;
+			border-radius: 3px
+		}
+
+		.battery-top {
+			height: 5px;
+			width: 15px;
+			background-color: #ACACAC;
+			-webkit-border-radius: 5px 5px 0 0;
+			-moz-border-radius: 5px 5px 0 0;
+			border-radius: 5px 5px 0 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="content">
+		<div class="header">
+			<h3>Battery Status</h3>
+			<div class="icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="lime" class="bi bi-lightning-charge-fill" viewBox="0 0 16 16">
+					<path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z" />
+				</svg>
+			</div>
+		</div>
+		<div class="container">
+			<div class="battery-div">
+				<div class="battery-top"></div>
+				<div class="battery">
+					<div class="inBattery"></div>
+				</div>
+			</div>
+			<div class="details">
+				<div class="ques">
+					<p>Battery left</p>
+					<p>Is charging..?</p>
+					<p>Will last</p>
+				</div>
+				<div class="ans">
+					<p id="levelB"></p>
+					<p id="charStatus"></p>
+					<p id="remB"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" charset="utf-8">
+		window.addEventListener("load", () => {
+			let levelOut = document.querySelector("#levelB");
+			let statusOut = document.querySelector("#charStatus");
+			let bIcon = document.querySelector(".icon");
+			let remOut = document.querySelector("#remB");
+			let inBattery = document.querySelector(".inBattery");
+			let calcBattery = () => {
+				let getBattery = navigator.getBattery();
+				getBattery.then((battery) => {
+					levelOut.textContent = `${Math.floor(battery.level*100)}%`;
+					inBattery.style.height = `${battery.level*100}%`
+					if (battery.charging) {
+						statusOut.textContent = "Yes";
+						statusOut.style.color = "lime"
+						bIcon.style.display = "block"
+					} else {
+						statusOut.textContent = "Nope";
+						statusOut.style.color = "#ACACAC";
+						bIcon.style.display = "none"
+					}
+					remOut.textContent = battery.chargingTime
+				})
+				window.requestAnimationFrame(calcBattery)
+			}
+			window.requestAnimationFrame(calcBattery)
+		})
+	</script>
+</body>
+
+</html>

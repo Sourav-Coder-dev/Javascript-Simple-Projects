@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style type="text/css" media="all">
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .main {
+      width: 100%;
+      height: min-content;
+      border: 1px solid #000;
+      text-align: center;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    .colors {
+      height: 50px;
+      width: 50px;
+      display: inline-block;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      border: 1px solid #000;
+    }
+
+    h2 {
+      margin: 5px 0 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <h2>Choose color</h2>
+    <div class="colors" id="red"></div>
+    <div class="colors" id="blue"></div>
+    <div class="colors" id="grey"></div>
+    <div class="colors" id="lime"></div>
+    <div class="colors" id="pink"></div>
+    <div class="colors" id="CornflowerBlue"></div>
+    <div class="colors" id="DarkCyan"></div>
+    <div class="colors" id="aquamarine"></div>
+    <div class="colors" id="beige"></div>
+    <div class="colors" id="BurlyWood"></div>
+    <div class="colors" id="IndianRed"></div>
+    <div class="colors" id="Magenta"></div>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+    let body = document.body;
+    let colors = document.querySelectorAll(".colors");
+    for (let item of colors) {
+      item.style.background = `${item.id}`;
+      item.addEventListener("click", (e) => {
+        body.style.background = `${e.target.id}`;
+      })
+    }
+  </script>
+</body>
+
+</html>
